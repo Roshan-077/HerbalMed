@@ -139,6 +139,11 @@
             max-height: 70px;
             overflow:hidden;
         }
+        a {
+            color: inherit; /* Inherits the text color from its parent */
+            text-decoration: none; /* Removes the underline if needed */
+        }
+        
     </style>
     <link rel="icon" type="image/x-icon" href="./img/leaf.png">
   
@@ -147,7 +152,7 @@
 <body >
   
     <div class="container" >
-        <h1>🌿 Herbal Medicine Recipe Generator</h1>
+        <h1><a href="index.html">🌿 Herbal Medicine</a><a href="recipe.html"> Recipe Generator</a></h1>
         
         <div class="search-box">
             <input type="text" id="herbInput" placeholder="Enter herb name...">
