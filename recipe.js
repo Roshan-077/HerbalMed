@@ -29,7 +29,7 @@ function selectHerb(herb) {
                    <strong>Health Benefits:</strong> ${recipe.benefits}
                </div>
                <div class="disclaimer" style="color: red; font-weight: bold; font-size: 14px; margin: 10px 0; padding: 5px; background-color: #ffe6e6; border: 1px solid red; border-radius: 5px; text-align: center;">
-                   Disclaimer: Please consult a BAMS doctor before consuming prescribed medicine.
+                   NOTE: Please consult a BAMS doctor before consuming prescribed medicine.
                </div>
                 
            `;
