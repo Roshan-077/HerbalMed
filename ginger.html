@@ -189,6 +189,16 @@
         .bd-mode-toggle {
             z-index: 1500;
         }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            transition: top 0.3s;
+            z-index: 1000;
+        }
+        .nav-ul a:hover {
+            color: #ffffffb8;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
 </head>
@@ -198,24 +208,22 @@
             <a class="navbar-brand text-light" href="index.html">
                 <img src="./img/leaf.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> HerbalMed
             </a>
-            <ul class="nav-ul">
-                <li><a href='recipe.html' style="color:white">Recipe</a></li>
-                <li><a href="directory.html" style="color:white">Discover</a></li>
-                <li class="nav-item">
-                    <div id="google_translate_element"></div>
-        
-                    <script type="text/javascript">
-                    function googleTranslateElementInit() {
-                      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                    }
-                    </script>
-                    
-                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                    
-                </li>
+            <ul class="nav-ul d-flex" style="list-style: none; padding: 0; margin: 0;">
+                <li><a href="index.html" style="color:white; text-decoration: none; margin-right: 15px;">Home</a></li>
+                <li><a href="recipe.html" style="color:white; text-decoration: none; margin-right: 15px;">Recipe</a></li>
+                <li><a href="directory.html" style="color:white; text-decoration: none; margin-right: 15px;">Discover</a></li>
             </ul>
+            <div id="google_translate_element" class="ms-auto"></div>
+    
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                }
+            </script>
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         </div>
     </nav>
+    
     <main class="container">
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary" style="background-image: url('./img/ginger.jpg');">
             <div class="col-lg-6 px-0">
@@ -308,7 +316,24 @@
     </a>
     <span class="tooltip">need a recipe?</span>
 </div>
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector(".navbar");
 
+    window.addEventListener("scroll", function () {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop) {
+            // Scrolling Down - Hide Navbar
+            navbar.style.top = "-70px";
+        } else {
+            // Scrolling Up - Show Navbar
+            navbar.style.top = "0";
+        }
+
+        lastScrollTop = scrollTop;
+    });
+</script>
     <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

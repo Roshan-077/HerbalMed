@@ -17,40 +17,78 @@
             background-repeat: no-repeat;
             background-position: center;
             background-attachment: fixed;
-           
         }
-        
 
-        
+        /* Navbar Styling */
+        .navbar {
+            background-color: black; /* Black Navbar */
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            transition: top 0.4s ease-in-out;
+            z-index: 1000;
+        }
+
+        .container-fluid {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .navbar-brand img {
+            margin-right: 10px;
+        }
+
+        .nav-ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin-left: 30px;
+        }
+
+        .nav-ul li {
+            margin-right: 20px;
+        }
+
+        .nav-ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-ul a:hover {
+            color: #ffffffb8;
+        }
+
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 100px auto 0;
             background-color: #fff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        
-            /* Background Image */
             background-image: url('./img/containerback1.jpg');
-            background-size: cover; /* Makes image cover the full container */
-            background-repeat: no-repeat; /* Prevents tiling */
-            background-position: center; /* Centers the image */
-        
-            /* Center vertically */
-            position: absolute;
-            top: 68%;
-            transform: translateY(-50%);
-        
-            /* Shift more towards the right */
-            right: 10%;
-            width: 90%; /* Ensure it takes full width */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 90%;
         }
-        
 
         h1 {
             color: #2c5f2d;
-            text-align: center;
+            text-align: left;
             margin-bottom: 30px;
+            margin-left: 20px;
         }
 
         .search-box {
@@ -124,40 +162,35 @@
             border-radius: 8px;
             margin-top: 15px;
         }
-        .nav-ul {
-            display: flex;
-          }
-          
-       
-          
-        .nav-ul a:hover {
-            color: #ffffffb8;
-          }
-          
 
-        .card-text{
-            max-height: 70px;
-            overflow:hidden;
-        }
         a {
-            color: inherit; /* Inherits the text color from its parent */
-            text-decoration: none; /* Removes the underline if needed */
+            color: inherit;
+            text-decoration: none;
         }
-        
     </style>
     <link rel="icon" type="image/x-icon" href="./img/leaf.png">
-  
-     <link rel="stylesheet" href="styles/style.css"/>
+    <link rel="stylesheet" href="styles/style.css"/>
 </head>
-<body >
-  
-    <div class="container" >
-        <h1><a href="index.html">🌿 Herbal Medicine</a><a href="recipe.html"> Recipe Generator</a></h1>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="./img/leaf.png" alt="Logo" width="30" height="24"> HerbalMed
+            </a>
+            <ul class="nav-ul">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="directory.html">Discover</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>🌿 Herbal Medicine Recipe Generator</h1>
         
         <div class="search-box">
             <input type="text" id="herbInput" placeholder="Enter herb name...">
             <button onclick="generateRecipe()">Generate Recipe</button>
-            <div onclick="googleTranslateElementInit()" id="google_translate_element">Google Translate</div>
         </div>
 
         <div class="suggestions">
@@ -179,16 +212,23 @@
 
         <div id="recipeResult" class="recipe-card"></div>
     </div>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-          new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages:'en,kn,hi',layout: google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');
-        }
-    </script>
-        
-   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-   
-   
+    <script>
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener("scroll", function () {
+            let navbar = document.getElementById("navbar");
+            
+            if (window.scrollY > lastScrollY) {
+                navbar.style.top = "-60px"; /* Hide navbar when scrolling down */
+            } else {
+                navbar.style.top = "0"; /* Show navbar when scrolling up */
+            }
+
+            lastScrollY = window.scrollY;
+        });
+    </script>
+
     <script src="recipe.js"></script>
 
 </body>
